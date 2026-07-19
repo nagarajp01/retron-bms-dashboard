@@ -24,4 +24,15 @@ app.get("/",(req,res)=>{
     })
 })
 
+
+//router import
+import sessionRoutes from "./routes/session.routes.js"
+
+app.use("/api/sessions",sessionRoutes)
+
+
+
+
+
+
 export { app }
