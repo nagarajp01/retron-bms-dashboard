@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Generated files
+public/static/
+
+# Generated images
+temp_media/
+
+# Logs
+npm-debug.log*
