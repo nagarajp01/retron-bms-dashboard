@@ -12,3 +12,5 @@ temp_media/
 
 # Logs
 npm-debug.log*
+
+temp_uploads/

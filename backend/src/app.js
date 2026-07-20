@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import path from "path"
+import { fileURLToPath } from "url";
 
 const app=express()
 
@@ -8,6 +10,9 @@ app.use(cors({
     credentials:true
 
 }))
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json({
     limit:"16kb"
@@ -27,6 +32,11 @@ app.get("/",(req,res)=>{
 
 //router import
 import sessionRoutes from "./routes/session.routes.js"
+
+app.use(
+  "/static",
+  express.static(path.join(__dirname, "../public/static"))
+);
 
 app.use("/api/sessions",sessionRoutes)
 
