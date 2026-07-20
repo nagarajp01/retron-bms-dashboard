@@ -1,5 +1,5 @@
 // One-off test script — NOT part of the app itself.
-// Run this manually to verify the parser works before using it in a route.
+// Running this manually to verify the parser works before using it in a route.
 // Usage: node src/utils/testParser.js "path/to/96V_50AH_Neware_test_report.xlsx"
 
 import { parseTestSheetFile } from "./parseTestSheet.js";

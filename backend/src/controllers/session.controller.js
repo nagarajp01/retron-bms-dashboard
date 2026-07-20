@@ -47,9 +47,13 @@ export const getSessionById = async (req, res) => {
 // simulating a live feed. Alerts fire in sync by comparing each
 // record's real timestamp against pending log entries' timestamps.
 export const streamSession = async (req, res) => {
-  const session = await TestSession.findById(req.params.id);
+  try {
+    
+    const session = await TestSession.findById(req.params.id);
   if (!session) {
-    return res.status(404).end();
+    return res.status(404).json({
+      error:"Session not found"
+    });
   }
 
   res.set({
@@ -86,6 +90,12 @@ export const streamSession = async (req, res) => {
   req.on("close", () => {
     clearInterval(interval);
   });
+
+
+  } catch (error) {
+    console.error("streamSession error: ", error.message);
+    res.status(500).json({error:"Failed to stream session"});
+  }
 };
 
 // POST /api/sessions/upload  (multipart/form-data, field name: "file")

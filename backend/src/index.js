@@ -17,13 +17,11 @@ connectDB()
     await seedDefaultSession();
     app.on("error",(error)=>{
         console.log("express Error",error);
-        throw error
     })
     app.listen(PORT, ()=>{
         console.log(`Server Started and running at ${process.env.PORT || 8000} `)
     })
 }).catch((error)=>{
-    console.log(
-        "MongoDB Connection FAILED!",error
-    )
+   console.error("MongoDB Connection FAILED:", error.message);
+    process.exit(1);
 })
