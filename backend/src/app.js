@@ -6,10 +6,13 @@ import { fileURLToPath } from "url";
 const app=express()
 
 app.use(cors({
-    origin:process.env.CORS_ORIGIN,
-    credentials:true
-
-}))
+  origin: [
+    "https://retron-bms-dashboard.vercel.app",
+    "http://localhost:4173",
+    "http://localhost:5173"
+  ],
+  credentials: true,
+}));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
