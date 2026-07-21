@@ -1,7 +1,7 @@
 import connectDB from "./db/database.js";
 import {app} from "./app.js"
 import dotenv from "dotenv"
-import { seedDefaultSession } from "./Utils/seedDefault.js";
+import { seedDefaultSession } from "./UtilsTemp/seedDefault.js";
 
 
 
