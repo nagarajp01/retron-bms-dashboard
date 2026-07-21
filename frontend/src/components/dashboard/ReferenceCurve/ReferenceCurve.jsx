@@ -29,7 +29,7 @@ export default function ReferenceCurve({
       <div className="flex h-[340px] items-center justify-center rounded-xl border border-dashed border-[#2B313C] bg-[#141821]">
         {curveImageUrl ? (
           <img
-            src={`http://localhost:8000${curveImageUrl}`}
+            src={`https://retron-bms-dashboard.onrender.com${curveImageUrl}`}
             alt={curveLabel || "Reference Curve"}
             className="max-h-full max-w-full object-contain"
           />

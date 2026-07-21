@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000/api/sessions";
+const API_BASE = "https://retron-bms-dashboard.onrender.com/api/sessions";
 
 async function handleResponse(response) {
   if (!response.ok) {
