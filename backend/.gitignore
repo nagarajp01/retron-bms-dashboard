@@ -4,8 +4,7 @@ node_modules/
 # Environment variables
 .env
 
-# Generated files
-public/static/
+
 
 # Generated images
 temp_media/
