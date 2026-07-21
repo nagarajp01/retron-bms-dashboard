@@ -70,10 +70,22 @@ export const streamSession = async (req, res) => {
   let logPtr = 0;
 
   const interval = setInterval(() => {
-    if (idx >= records.length) {
-      idx = 0;
-      logPtr = 0;
-    }
+    // if (idx >= records.length) {
+    //   idx = 0;
+    //   logPtr = 0;
+    // }
+
+     // End the stream after the last record
+  if (idx >= records.length) {
+    clearInterval(interval);
+
+    // Optional: tell the frontend the stream is complete
+    res.write(`event: complete\ndata: {"message":"Stream completed"}\n\n`);
+
+    res.end();
+    return;
+  }
+
     const r = records[idx];
 
     res.write(`event: record\ndata: ${JSON.stringify(r)}\n\n`);
