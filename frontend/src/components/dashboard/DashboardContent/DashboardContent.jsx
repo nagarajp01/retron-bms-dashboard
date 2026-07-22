@@ -136,7 +136,7 @@ export default function DashboardContent() {
     },
     {
       title: "Power",
-      value: (latest.power / 1000).toFixed(2),
+      value: latest.power,
       unit: "W",
       color: "#FB923C",
     },
