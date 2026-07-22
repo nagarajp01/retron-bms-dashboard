@@ -170,6 +170,8 @@ export const exportSession = async (req, res) => {
     unitSheet.addRow([session.unit.filename]);
     unitSheet.addRow(["device", ...session.unit.device.split("-")]);
     unitSheet.addRow(["Start time", "", session.unit.startTime, "", "End time", "", session.unit.endTime]);
+    unitSheet.addRow(["NDA file path"]);
+    unitSheet.addRow(["List of unit plans"]);
     unitSheet.addRow(session.unit.columns.map((c) => c.name));
     unitSheet.addRow(session.unit.columns.map((c) => c.unit));
 
@@ -185,11 +187,18 @@ export const exportSession = async (req, res) => {
     testSheet.addRow(["Active material", "", t.activeMaterial, "Nominal capacity", "", t.nominalCapacity]);
     testSheet.addRow([]);
     testSheet.addRow(["Step plan"]);
+    const stepPlanCols = [
+      "Step Index", "Step Name", "Step Time(hh:mm:ss.ms)", "Voltage(V)", "C-rate(C)",
+      "Current(A)", "Cut-off voltage (V)", "Cut-off C-rate(C)", "Cut-off curr.(A)",
+      "Energy(Wh)", "-ΔV(V)", "Power(W)", "Resistance(mΩ)", "Capacity(Ah)",
+      "Record settings", "Aux.CH recording condition", "Max Vi(V)", "Min Vi(V)",
+      "Max Ti(℃)", "Min Ti(℃)", "Segment record1", "Segment record2",
+      "Current range (A)", "Expression current", "Expression voltage", "Set function"
+    ];
     if (t.stepPlan && t.stepPlan.length > 0) {
-      const planCols = Object.keys(t.stepPlan[0]);
-      testSheet.addRow(planCols);
+      testSheet.addRow(stepPlanCols);
       t.stepPlan.forEach((row) => {
-        testSheet.addRow(planCols.map((c) => row[c] ?? ""));
+        testSheet.addRow(stepPlanCols.map((c) => row[c] ?? ""));
       });
     }
 
@@ -205,14 +214,16 @@ export const exportSession = async (req, res) => {
 
     // ---- step sheet ----
     const stepSheet = wb.addWorksheet("step");
-    if (session.steps && session.steps.length > 0) {
-      const stepCols = Object.keys(session.steps[0].toObject ? session.steps[0].toObject() : session.steps[0]);
-      stepSheet.addRow(stepCols);
-      session.steps.forEach((row) => {
-        const obj = row.toObject ? row.toObject() : row;
-        stepSheet.addRow(stepCols.map((c) => obj[c]));
-      });
-    }
+    const stepCols = [
+      "Cycle Index", "Step Index", "Step Number", "Step Type", "Step Time",
+      "Oneset Date", "End Date", "Capacity(Ah)", "Energy(Wh)",
+      "Oneset Volt.(V)", "End Voltage(V)"
+    ];
+    stepSheet.addRow(stepCols);
+    session.steps.forEach((row) => {
+      const obj = row.toObject ? row.toObject() : row;
+      stepSheet.addRow(stepCols.map((c) => obj[c] ?? ""));
+    });
 
     // ---- record sheet (full resolution) ----
     const recordSheet = wb.addWorksheet("record");
