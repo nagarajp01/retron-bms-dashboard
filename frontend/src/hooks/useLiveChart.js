@@ -67,7 +67,7 @@ export default function useLiveChart(sessionId, totalRecords = 0) {
 
       const alert = {
         dataPoint: backendAlert.dataPoint,
-        time: backendAlert.time.split,  //(" ")
+        time: backendAlert.time,  //(" ")
         type:
           backendAlert.class === "Prompt"
             ? "PROMPT"
