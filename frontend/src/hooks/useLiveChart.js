@@ -99,7 +99,7 @@ export default function useLiveChart(sessionId, totalRecords = 0) {
 
     eventSource.onerror = (err) => {
       console.error("SSE Error:", err);
-      eventSource.close();
+      // eventSource.close();
     };
 
     return () => {
