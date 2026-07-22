@@ -18,11 +18,11 @@
   --muted:#8b95a7;
 }
 
-*{
+/* *{
   margin: 1235;
   padding:100;
   box-sizing:border-box;
-}
+} */
 
 html{
   scroll-behavior:smooth;
