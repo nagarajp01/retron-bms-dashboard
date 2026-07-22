@@ -3,23 +3,23 @@ import DashboardCard from "../../common/DashboardCard/DashboardCard";
 export default function ReferenceCurve({
   curveImageUrl,
   curveLabel,
-  latestVoltage,
-  targetVoltage = 96,
+  // latestVoltage,
+  // targetVoltage = 96,
 }) {
-  const current =
-    latestVoltage !== undefined && latestVoltage !== null
-      ? Number(latestVoltage)
-      : null;
+  // const current =
+  //   latestVoltage !== undefined && latestVoltage !== null
+  //     ? Number(latestVoltage)
+  //     : null;
 
-  const deviation =
-    current !== null
-      ? (current - targetVoltage).toFixed(2)
-      : null;
+  // const deviation =
+  //   current !== null
+  //     ? (current - targetVoltage).toFixed(2)
+  //     : null;
 
-  const withinLimit =
-    current !== null
-      ? Math.abs(current - targetVoltage) <= 1
-      : false;
+  // const withinLimit =
+  //   current !== null
+  //     ? Math.abs(current - targetVoltage) <= 1
+  //     : false;
 
   return (
     <DashboardCard
@@ -46,7 +46,14 @@ export default function ReferenceCurve({
         )}
       </div>
 
-      <div className="mt-4 grid grid-cols-4 gap-4 border-t border-[#2B313C] pt-4">
+
+        <div className="mt-4 border-t border-[#2B313C] pt-4">
+         <p className="text-center text-sm font-medium text-slate-300">
+                  {curveLabel}
+             </p>
+          </div>
+
+      {/* <div className="mt-4 grid grid-cols-4 gap-4 border-t border-[#2B313C] pt-4">
         <div>
           <p className="text-xs uppercase tracking-wider text-slate-500">
             Target
@@ -96,7 +103,7 @@ export default function ReferenceCurve({
               : "Out of Limit"}
           </span>
         </div>
-      </div>
+      </div> */}
     </DashboardCard>
   );
 }

@@ -2,13 +2,13 @@ import DashboardCard from "../../common/DashboardCard/DashboardCard";
 import {
   FileText,
   Cpu,
-  User,
+  // User,
   Settings,
   Hash,
-  Thermometer,
+  // Thermometer,
   Gauge,
   Activity,
-  BatteryCharging,
+  // BatteryCharging,
 } from "lucide-react";
 
 const fields = [
@@ -26,13 +26,13 @@ const fields = [
     color: "text-emerald-400",
     bg: "bg-emerald-500/10",
   },
-  {
-    key: "builder",
-    label: "Builder",
-    icon: User,
-    color: "text-violet-400",
-    bg: "bg-violet-500/10",
-  },
+  // {
+  //   key: "builder",
+  //   label: "Builder",
+  //   icon: User,
+  //   color: "text-violet-400",
+  //   bg: "bg-violet-500/10",
+  // },
   {
     key: "recordSettings",
     label: "Record Settings",
@@ -47,13 +47,13 @@ const fields = [
     color: "text-pink-400",
     bg: "bg-pink-500/10",
   },
-  {
-    key: "nominalCapacity",
-    label: "Nominal Capacity",
-    icon: BatteryCharging,
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10",
-  },
+  // {
+  //   key: "nominalCapacity",
+  //   label: "Nominal Capacity",
+  //   icon: BatteryCharging,
+  //   color: "text-emerald-400",
+  //   bg: "bg-emerald-500/10",
+  // },
   {
     key: "voltageRange",
     label: "Voltage Range",
@@ -68,13 +68,13 @@ const fields = [
     color: "text-yellow-400",
     bg: "bg-yellow-500/10",
   },
-  {
-    key: "remarks",
-    label: "Remarks",
-    icon: Thermometer,
-    color: "text-red-400",
-    bg: "bg-red-500/10",
-  },
+  // {
+  //   key: "remarks",
+  //   label: "Remarks",
+  //   icon: Thermometer,
+  //   color: "text-red-400",
+  //   bg: "bg-red-500/10",
+  // },
 ];
 
 export default function TestConfiguration({
@@ -96,7 +96,7 @@ export default function TestConfiguration({
 
     device: unit.device || "-",
 
-    builder: test.builder || "-",
+    // builder: test.builder || "-",
 
     recordSettings:
       test.recordSettings ||
@@ -105,8 +105,8 @@ export default function TestConfiguration({
 
     cycleCount: test.cycleCount ?? "-",
 
-    nominalCapacity:
-      test.nominalCapacity || "-",
+    // nominalCapacity:
+    //   test.nominalCapacity || "-",
 
     voltageRange:
       test.voltageRange ||
@@ -116,7 +116,7 @@ export default function TestConfiguration({
       test.currentRange ||
       `${test.currLower ?? "-"} ~ ${test.currUpper ?? "-"} A`,
 
-    remarks: test.remarks || "-",
+    // remarks: test.remarks || "-",
   };
 
   return (
